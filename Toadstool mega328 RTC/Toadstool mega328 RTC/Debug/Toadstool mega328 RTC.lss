@@ -1,0 +1,1743 @@
+
+Toadstool mega328 RTC.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         000000c4  00800100  00000958  000009ec  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         00000958  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .bss          0000000a  008001c4  008001c4  00000ab0  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  00000ab0  2**0
+                  CONTENTS, READONLY
+  4 .debug_aranges 000000f0  00000000  00000000  00000ae0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   00001646  00000000  00000000  00000bd0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 000005b5  00000000  00000000  00002216  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   00000636  00000000  00000000  000027cb  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  00000278  00000000  00000000  00002e04  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    000004a6  00000000  00000000  0000307c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    00000ca3  00000000  00000000  00003522  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 000000b0  00000000  00000000  000041c5  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
+   4:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+   8:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+   c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  10:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  14:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  18:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  1c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  20:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  24:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  28:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  2c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  30:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  34:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  38:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  3c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  40:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  44:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  48:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  4c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  50:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  54:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  58:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  5c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  60:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  64:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+
+00000068 <__ctors_end>:
+  68:	11 24       	eor	r1, r1
+  6a:	1f be       	out	0x3f, r1	; 63
+  6c:	cf ef       	ldi	r28, 0xFF	; 255
+  6e:	d8 e0       	ldi	r29, 0x08	; 8
+  70:	de bf       	out	0x3e, r29	; 62
+  72:	cd bf       	out	0x3d, r28	; 61
+
+00000074 <__do_copy_data>:
+  74:	11 e0       	ldi	r17, 0x01	; 1
+  76:	a0 e0       	ldi	r26, 0x00	; 0
+  78:	b1 e0       	ldi	r27, 0x01	; 1
+  7a:	e8 e5       	ldi	r30, 0x58	; 88
+  7c:	f9 e0       	ldi	r31, 0x09	; 9
+  7e:	02 c0       	rjmp	.+4      	; 0x84 <__do_copy_data+0x10>
+  80:	05 90       	lpm	r0, Z+
+  82:	0d 92       	st	X+, r0
+  84:	a4 3c       	cpi	r26, 0xC4	; 196
+  86:	b1 07       	cpc	r27, r17
+  88:	d9 f7       	brne	.-10     	; 0x80 <__do_copy_data+0xc>
+
+0000008a <__do_clear_bss>:
+  8a:	21 e0       	ldi	r18, 0x01	; 1
+  8c:	a4 ec       	ldi	r26, 0xC4	; 196
+  8e:	b1 e0       	ldi	r27, 0x01	; 1
+  90:	01 c0       	rjmp	.+2      	; 0x94 <.do_clear_bss_start>
+
+00000092 <.do_clear_bss_loop>:
+  92:	1d 92       	st	X+, r1
+
+00000094 <.do_clear_bss_start>:
+  94:	ae 3c       	cpi	r26, 0xCE	; 206
+  96:	b2 07       	cpc	r27, r18
+  98:	e1 f7       	brne	.-8      	; 0x92 <.do_clear_bss_loop>
+  9a:	0e 94 e1 02 	call	0x5c2	; 0x5c2 <main>
+  9e:	0c 94 aa 04 	jmp	0x954	; 0x954 <_exit>
+
+000000a2 <__bad_interrupt>:
+  a2:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+000000a6 <I2C_init>:
+* @param[in]	I2C_kHz	The I2C bus speed in kHz (eg. 100 = 100kHz)
+* 
+* @return	none
+************************************************************************/
+void I2C_init(uint8_t I2C_kHz)
+{
+  a6:	cf 93       	push	r28
+  a8:	df 93       	push	r29
+  aa:	00 d0       	rcall	.+0      	; 0xac <I2C_init+0x6>
+  ac:	cd b7       	in	r28, 0x3d	; 61
+  ae:	de b7       	in	r29, 0x3e	; 62
+	uint8_t bitRate;
+	volatile uint16_t I2C_Hz = (unsigned long)I2C_kHz * 1000UL;
+  b0:	28 ee       	ldi	r18, 0xE8	; 232
+  b2:	33 e0       	ldi	r19, 0x03	; 3
+  b4:	48 2f       	mov	r20, r24
+  b6:	42 9f       	mul	r20, r18
+  b8:	c0 01       	movw	r24, r0
+  ba:	43 9f       	mul	r20, r19
+  bc:	90 0d       	add	r25, r0
+  be:	11 24       	eor	r1, r1
+  c0:	9a 83       	std	Y+2, r25	; 0x02
+  c2:	89 83       	std	Y+1, r24	; 0x01
+	
+	bitRate = (F_CPU / (I2C_Hz * 2 * I2C_PRESCALER)) - (16 / (2 * I2C_PRESCALER) );	//Calculate bit-rate
+  c4:	29 81       	ldd	r18, Y+1	; 0x01
+  c6:	3a 81       	ldd	r19, Y+2	; 0x02
+  c8:	22 0f       	add	r18, r18
+  ca:	33 1f       	adc	r19, r19
+  cc:	22 0f       	add	r18, r18
+  ce:	33 1f       	adc	r19, r19
+  d0:	22 0f       	add	r18, r18
+  d2:	33 1f       	adc	r19, r19
+  d4:	40 e0       	ldi	r20, 0x00	; 0
+  d6:	50 e0       	ldi	r21, 0x00	; 0
+  d8:	60 e0       	ldi	r22, 0x00	; 0
+  da:	74 e2       	ldi	r23, 0x24	; 36
+  dc:	84 ef       	ldi	r24, 0xF4	; 244
+  de:	90 e0       	ldi	r25, 0x00	; 0
+  e0:	0e 94 79 04 	call	0x8f2	; 0x8f2 <__udivmodsi4>
+  e4:	22 50       	subi	r18, 0x02	; 2
+	
+	TWSR &= ~((1<<TWPS0)|(1<<TWPS1));		//Clear the pre-scaler
+  e6:	e9 eb       	ldi	r30, 0xB9	; 185
+  e8:	f0 e0       	ldi	r31, 0x00	; 0
+  ea:	80 81       	ld	r24, Z
+  ec:	8c 7f       	andi	r24, 0xFC	; 252
+  ee:	80 83       	st	Z, r24
+	TWSR |= I2C_PRESCALER_BIT;				//Set the new pre-scaler
+  f0:	80 81       	ld	r24, Z
+  f2:	81 60       	ori	r24, 0x01	; 1
+  f4:	80 83       	st	Z, r24
+	
+	TWBR = bitRate;	//Set the bit rate
+  f6:	20 93 b8 00 	sts	0x00B8, r18
+	
+}
+  fa:	0f 90       	pop	r0
+  fc:	0f 90       	pop	r0
+  fe:	df 91       	pop	r29
+ 100:	cf 91       	pop	r28
+ 102:	08 95       	ret
+
+00000104 <I2C_sendStop>:
+*
+* @return	none
+************************************************************************/
+void I2C_sendStop(void)
+{
+	TWCR = (1<<TWINT)|(1<<TWSTO)|(1<<TWEN); //Clear the Interrupt Flag, Set Stop bit, Enable TWI
+ 104:	84 e9       	ldi	r24, 0x94	; 148
+ 106:	80 93 bc 00 	sts	0x00BC, r24
+ 10a:	08 95       	ret
+
+0000010c <I2C_waitComplete>:
+* @return	the result of the operation - the TWI Status bits from TWI Status Register
+************************************************************************/
+void I2C_waitComplete(void)
+{
+	
+	while (!(TWCR & (1<<TWINT)) );	//Wait for the TWINT interrupt flag to be set - indicates transmission complete
+ 10c:	ec eb       	ldi	r30, 0xBC	; 188
+ 10e:	f0 e0       	ldi	r31, 0x00	; 0
+ 110:	80 81       	ld	r24, Z
+ 112:	88 23       	and	r24, r24
+ 114:	ec f7       	brge	.-6      	; 0x110 <I2C_waitComplete+0x4>
+	
+}
+ 116:	08 95       	ret
+
+00000118 <I2C_sendStart>:
+*
+* @return	the result of the operation - the TWI Status bits from TWI Status Register
+************************************************************************/
+uint8_t I2C_sendStart(void)
+{
+	TWCR = (1<<TWINT)|(1<<TWSTA)|(1<<TWEN); //Clear the Interrupt Flag, Set Start bit, Enable TWI
+ 118:	84 ea       	ldi	r24, 0xA4	; 164
+ 11a:	80 93 bc 00 	sts	0x00BC, r24
+	
+	I2C_waitComplete();	//Wait for transmission to complete
+ 11e:	0e 94 86 00 	call	0x10c	; 0x10c <I2C_waitComplete>
+	
+
+	if (TW_STATUS == 0x08)
+ 122:	80 91 b9 00 	lds	r24, 0x00B9
+ 126:	88 7f       	andi	r24, 0xF8	; 248
+ 128:	88 30       	cpi	r24, 0x08	; 8
+ 12a:	11 f0       	breq	.+4      	; 0x130 <I2C_sendStart+0x18>
+	{
+		#if DEBUGLEVEL > 2
+		UART_writeString("I2C_sendStart OK\r\n");
+		#endif
+	}
+	else if (TW_STATUS == 0x10)
+ 12c:	80 91 b9 00 	lds	r24, 0x00B9
+		UART_printDecimal(TW_STATUS,0);
+		UART_writeString("\r\n");
+		#endif
+	}
+		
+	return TW_STATUS;	//Success
+ 130:	80 91 b9 00 	lds	r24, 0x00B9
+	
+}
+ 134:	88 7f       	andi	r24, 0xF8	; 248
+ 136:	08 95       	ret
+
+00000138 <I2C_send>:
+*
+* @return	the result of the operation - the TWI Status bits from TWI Status Register
+************************************************************************/
+uint8_t I2C_send(uint8_t Data)
+{
+	TWDR = Data;	//Set the Data to send
+ 138:	80 93 bb 00 	sts	0x00BB, r24
+	TWCR = (1<<TWINT) | (1<<TWEN);		//Clear interrupt flag and enable TWI
+ 13c:	84 e8       	ldi	r24, 0x84	; 132
+ 13e:	80 93 bc 00 	sts	0x00BC, r24
+	
+	I2C_waitComplete();	//Wait for transmit to complete
+ 142:	0e 94 86 00 	call	0x10c	; 0x10c <I2C_waitComplete>
+			UART_printDecimal(TW_STATUS,0);
+			UART_writeString("\r\n");
+	}
+	
+#endif
+	return TW_STATUS;	//Return the status
+ 146:	80 91 b9 00 	lds	r24, 0x00B9
+	
+}
+ 14a:	88 7f       	andi	r24, 0xF8	; 248
+ 14c:	08 95       	ret
+
+0000014e <I2C_read>:
+* @param[in]	sendAck 1=Send an ACK; any other = do not send ACK
+*
+* @return	The data read from TWI (0 if an error occurred)
+************************************************************************/
+uint8_t I2C_read(uint8_t sendAck)
+{
+ 14e:	cf 93       	push	r28
+	uint8_t	ackBit = 0;
+	uint8_t statusCheck = TW_MR_DATA_NACK;	//Assume status check has no ACK
+	
+	if (sendAck == 1)
+ 150:	81 30       	cpi	r24, 0x01	; 1
+ 152:	19 f0       	breq	.+6      	; 0x15a <I2C_read+0xc>
+* @return	The data read from TWI (0 if an error occurred)
+************************************************************************/
+uint8_t I2C_read(uint8_t sendAck)
+{
+	uint8_t	ackBit = 0;
+	uint8_t statusCheck = TW_MR_DATA_NACK;	//Assume status check has no ACK
+ 154:	c8 e5       	ldi	r28, 0x58	; 88
+*
+* @return	The data read from TWI (0 if an error occurred)
+************************************************************************/
+uint8_t I2C_read(uint8_t sendAck)
+{
+	uint8_t	ackBit = 0;
+ 156:	80 e0       	ldi	r24, 0x00	; 0
+ 158:	02 c0       	rjmp	.+4      	; 0x15e <I2C_read+0x10>
+	uint8_t statusCheck = TW_MR_DATA_NACK;	//Assume status check has no ACK
+	
+	if (sendAck == 1)
+	{
+		ackBit = (1<<TWEA);	//Send ACK
+		statusCheck = TW_MR_DATA_ACK;	//status check has ACK
+ 15a:	c0 e5       	ldi	r28, 0x50	; 80
+	uint8_t	ackBit = 0;
+	uint8_t statusCheck = TW_MR_DATA_NACK;	//Assume status check has no ACK
+	
+	if (sendAck == 1)
+	{
+		ackBit = (1<<TWEA);	//Send ACK
+ 15c:	80 e4       	ldi	r24, 0x40	; 64
+		statusCheck = TW_MR_DATA_ACK;	//status check has ACK
+	}
+
+
+	TWCR = (1<<TWINT) | (1<<TWEN) | ackBit;				//Clear Interrupt, Enable TWI, send ACK if bit is set
+ 15e:	84 68       	ori	r24, 0x84	; 132
+ 160:	80 93 bc 00 	sts	0x00BC, r24
+	
+	I2C_waitComplete();	//Wait for Transmission to complete
+ 164:	0e 94 86 00 	call	0x10c	; 0x10c <I2C_waitComplete>
+	
+	//Check Status
+#if DEBUGLEVEL
+	if (TW_STATUS != statusCheck)
+ 168:	20 91 b9 00 	lds	r18, 0x00B9
+ 16c:	28 7f       	andi	r18, 0xF8	; 248
+ 16e:	30 e0       	ldi	r19, 0x00	; 0
+ 170:	8c 2f       	mov	r24, r28
+ 172:	90 e0       	ldi	r25, 0x00	; 0
+ 174:	28 17       	cp	r18, r24
+ 176:	39 07       	cpc	r19, r25
+ 178:	89 f0       	breq	.+34     	; 0x19c <I2C_read+0x4e>
+	{
+		UART_writeString("I2C_read ERROR: TW_STATUS = ");
+ 17a:	82 e0       	ldi	r24, 0x02	; 2
+ 17c:	91 e0       	ldi	r25, 0x01	; 1
+ 17e:	0e 94 ee 03 	call	0x7dc	; 0x7dc <UART_writeString>
+		UART_printDecimal(TW_STATUS,0);
+ 182:	80 91 b9 00 	lds	r24, 0x00B9
+ 186:	88 7f       	andi	r24, 0xF8	; 248
+ 188:	60 e0       	ldi	r22, 0x00	; 0
+ 18a:	90 e0       	ldi	r25, 0x00	; 0
+ 18c:	0e 94 fd 03 	call	0x7fa	; 0x7fa <UART_printDecimal>
+		UART_writeString("\r\n");
+ 190:	86 ea       	ldi	r24, 0xA6	; 166
+ 192:	91 e0       	ldi	r25, 0x01	; 1
+ 194:	0e 94 ee 03 	call	0x7dc	; 0x7dc <UART_writeString>
+		return 0;	//An Error
+ 198:	80 e0       	ldi	r24, 0x00	; 0
+ 19a:	02 c0       	rjmp	.+4      	; 0x1a0 <I2C_read+0x52>
+	}
+#endif
+	
+	//Otherwise return data
+	return TWDR;
+ 19c:	80 91 bb 00 	lds	r24, 0x00BB
+	
+}
+ 1a0:	cf 91       	pop	r28
+ 1a2:	08 95       	ret
+
+000001a4 <RTC_write>:
+*
+* @return	1 = Success
+************************************************************************/
+
+uint8_t RTC_write(uint8_t deviceAddress, uint8_t registerAddress, uint8_t data)
+{
+ 1a4:	1f 93       	push	r17
+ 1a6:	cf 93       	push	r28
+ 1a8:	df 93       	push	r29
+ 1aa:	18 2f       	mov	r17, r24
+ 1ac:	d6 2f       	mov	r29, r22
+ 1ae:	c4 2f       	mov	r28, r20
+	uint8_t result;
+	uint8_t returnResult = 0;
+	
+	//Send START Condition
+	result = I2C_sendStart();
+ 1b0:	0e 94 8c 00 	call	0x118	; 0x118 <I2C_sendStart>
+	
+	//Send the device Address with WRITE
+	result = I2C_send(deviceAddress|TW_WRITE);
+ 1b4:	81 2f       	mov	r24, r17
+ 1b6:	0e 94 9c 00 	call	0x138	; 0x138 <I2C_send>
+
+	//Send Register Address to write to
+	result = I2C_send(registerAddress);	
+ 1ba:	8d 2f       	mov	r24, r29
+ 1bc:	0e 94 9c 00 	call	0x138	; 0x138 <I2C_send>
+
+	//Write byte to register
+	result = I2C_send(data);	//Data
+ 1c0:	8c 2f       	mov	r24, r28
+ 1c2:	0e 94 9c 00 	call	0x138	; 0x138 <I2C_send>
+
+	//Send STOP Condition
+	I2C_sendStop();
+ 1c6:	0e 94 82 00 	call	0x104	; 0x104 <I2C_sendStop>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 1ca:	8f e3       	ldi	r24, 0x3F	; 63
+ 1cc:	9c e9       	ldi	r25, 0x9C	; 156
+ 1ce:	01 97       	sbiw	r24, 0x01	; 1
+ 1d0:	f1 f7       	brne	.-4      	; 0x1ce <RTC_write+0x2a>
+ 1d2:	00 c0       	rjmp	.+0      	; 0x1d4 <RTC_write+0x30>
+ 1d4:	00 00       	nop
+
+	_delay_ms(10);
+
+	returnResult = 1;
+	return returnResult;
+}
+ 1d6:	81 e0       	ldi	r24, 0x01	; 1
+ 1d8:	df 91       	pop	r29
+ 1da:	cf 91       	pop	r28
+ 1dc:	1f 91       	pop	r17
+ 1de:	08 95       	ret
+
+000001e0 <RTC_read>:
+*
+* @return	The byte read from RTC
+************************************************************************/
+
+uint8_t RTC_read(uint8_t deviceAddress, uint8_t registerAddress)
+{
+ 1e0:	cf 93       	push	r28
+ 1e2:	df 93       	push	r29
+ 1e4:	c8 2f       	mov	r28, r24
+ 1e6:	d6 2f       	mov	r29, r22
+	uint8_t readData = 0;
+	uint8_t result;
+
+
+	//Send START Condition
+	result = I2C_sendStart();
+ 1e8:	0e 94 8c 00 	call	0x118	; 0x118 <I2C_sendStart>
+
+	//Send the device Address with WRITE - we need to write in order to specify the register to read from
+	result = I2C_send(deviceAddress|TW_WRITE);
+ 1ec:	8c 2f       	mov	r24, r28
+ 1ee:	0e 94 9c 00 	call	0x138	; 0x138 <I2C_send>
+
+	//Send Register Address to read from
+	result = I2C_send(registerAddress);	
+ 1f2:	8d 2f       	mov	r24, r29
+ 1f4:	0e 94 9c 00 	call	0x138	; 0x138 <I2C_send>
+
+
+	//Send RESTART Condition - now we read from the memory address
+	result = I2C_sendStart();
+ 1f8:	0e 94 8c 00 	call	0x118	; 0x118 <I2C_sendStart>
+
+
+	//Send the device Address with READ
+	result = I2C_send(deviceAddress|TW_READ);
+ 1fc:	8c 2f       	mov	r24, r28
+ 1fe:	81 60       	ori	r24, 0x01	; 1
+ 200:	0e 94 9c 00 	call	0x138	; 0x138 <I2C_send>
+
+	//Read the data returned by the RTC
+	readData = I2C_read(0);	//Read Data with NO ACK  (No ACK means we're done reading)
+ 204:	80 e0       	ldi	r24, 0x00	; 0
+ 206:	0e 94 a7 00 	call	0x14e	; 0x14e <I2C_read>
+ 20a:	c8 2f       	mov	r28, r24
+
+	//Send STOP Condition
+	I2C_sendStop();
+ 20c:	0e 94 82 00 	call	0x104	; 0x104 <I2C_sendStop>
+	
+	return readData;
+	
+}
+ 210:	8c 2f       	mov	r24, r28
+ 212:	df 91       	pop	r29
+ 214:	cf 91       	pop	r28
+ 216:	08 95       	ret
+
+00000218 <RTC_Init>:
+*				isBackupBat		Is a backup battery connected?
+*
+* @return
+************************************************************************/
+uint8_t RTC_Init(uint8_t deviceAddress, uint8_t is24Hour, uint8_t isBackupBat)
+{
+ 218:	1f 93       	push	r17
+ 21a:	cf 93       	push	r28
+ 21c:	df 93       	push	r29
+ 21e:	d8 2f       	mov	r29, r24
+ 220:	14 2f       	mov	r17, r20
+	
+	uint8_t tempVar = 0;
+	
+	settingBackupBat = isBackupBat;
+ 222:	40 93 01 01 	sts	0x0101, r20
+	setting24Hour = is24Hour;
+ 226:	60 93 00 01 	sts	0x0100, r22
+	//Check Oscillator and Backup Bat settings
+	#if DEBUGLEVEL > 2
+	UART_writeString("\r\n\r\n---Read Osc and VBATEN---\r\n");
+	#endif
+
+	tempVar = RTC_read(deviceAddress, MCP794_RTCWKDAY);
+ 22a:	63 e0       	ldi	r22, 0x03	; 3
+ 22c:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <RTC_read>
+ 230:	c8 2f       	mov	r28, r24
+
+	//If Backup Battery setting on module is not same as setting passed, update
+	if ((tempVar & (1<<MCP794_VBATEN)) != isBackupBat)
+ 232:	88 70       	andi	r24, 0x08	; 8
+ 234:	18 17       	cp	r17, r24
+ 236:	51 f0       	breq	.+20     	; 0x24c <RTC_Init+0x34>
+		UART_writeString("\r\n---Correcting Backup Battery setting to: ");
+		UART_printDecimal(isBackupBat);
+		UART_writeString("---\r\n");
+		#endif
+
+		if (isBackupBat == 0)
+ 238:	11 11       	cpse	r17, r1
+ 23a:	02 c0       	rjmp	.+4      	; 0x240 <RTC_Init+0x28>
+		{
+			tempVar &= ~(1<<MCP794_VBATEN);	//Disable the backup battery bit
+ 23c:	c7 7f       	andi	r28, 0xF7	; 247
+ 23e:	01 c0       	rjmp	.+2      	; 0x242 <RTC_Init+0x2a>
+		}
+		else
+		{
+			tempVar |= (1<<MCP794_VBATEN);	//Enable the backup battery bit
+ 240:	c8 60       	ori	r28, 0x08	; 8
+		}
+		
+		RTC_write(deviceAddress, MCP794_RTCWKDAY, tempVar);	//Write setting back
+ 242:	4c 2f       	mov	r20, r28
+ 244:	63 e0       	ldi	r22, 0x03	; 3
+ 246:	8d 2f       	mov	r24, r29
+ 248:	0e 94 d2 00 	call	0x1a4	; 0x1a4 <RTC_write>
+	}
+	
+	if ( (tempVar & (1<<MCP794_OSCRUN)) == 0)	//Oscillator is not running - start it
+ 24c:	c5 fd       	sbrc	r28, 5
+ 24e:	0a c0       	rjmp	.+20     	; 0x264 <RTC_Init+0x4c>
+	{
+
+		#if DEBUGLEVEL > 2
+		UART_writeString("\r\n\r\n---Start Osc---\r\n");
+		#endif
+		RTC_write(deviceAddress, MCP794_CONTROL, 0);	//Ensure external Osc disabled
+ 250:	40 e0       	ldi	r20, 0x00	; 0
+ 252:	67 e0       	ldi	r22, 0x07	; 7
+ 254:	8d 2f       	mov	r24, r29
+ 256:	0e 94 d2 00 	call	0x1a4	; 0x1a4 <RTC_write>
+		RTC_write(deviceAddress, MCP794_RTCSEC, 10 | (1<<MCP794_ST));	//Reset seconds to 10 (arbitrary) and start oscillator
+ 25a:	4a e8       	ldi	r20, 0x8A	; 138
+ 25c:	60 e0       	ldi	r22, 0x00	; 0
+ 25e:	8d 2f       	mov	r24, r29
+ 260:	0e 94 d2 00 	call	0x1a4	; 0x1a4 <RTC_write>
+ 264:	8f e3       	ldi	r24, 0x3F	; 63
+ 266:	9c e9       	ldi	r25, 0x9C	; 156
+ 268:	01 97       	sbiw	r24, 0x01	; 1
+ 26a:	f1 f7       	brne	.-4      	; 0x268 <RTC_Init+0x50>
+ 26c:	00 c0       	rjmp	.+0      	; 0x26e <RTC_Init+0x56>
+ 26e:	00 00       	nop
+	
+	#if DEBUGLEVEL > 2
+	UART_writeString("\r\n\r\n---Read Osc---\r\n");
+	#endif
+	
+	tempVar = RTC_read(deviceAddress, MCP794_RTCWKDAY);
+ 270:	63 e0       	ldi	r22, 0x03	; 3
+ 272:	8d 2f       	mov	r24, r29
+ 274:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <RTC_read>
+		#endif
+		return 0;	//Error: Oscillator didn't start
+	}
+	
+	return 1;	//All OK, oscillator started
+}
+ 278:	85 fb       	bst	r24, 5
+ 27a:	88 27       	eor	r24, r24
+ 27c:	80 f9       	bld	r24, 0
+ 27e:	df 91       	pop	r29
+ 280:	cf 91       	pop	r28
+ 282:	1f 91       	pop	r17
+ 284:	08 95       	ret
+
+00000286 <decToBcd>:
+*
+* @return	byte containing the BCD value
+************************************************************************/
+uint8_t decToBcd(uint8_t val)
+{
+	return ( (val / 10 * 16) + (val % 10) );
+ 286:	9d ec       	ldi	r25, 0xCD	; 205
+ 288:	89 9f       	mul	r24, r25
+ 28a:	91 2d       	mov	r25, r1
+ 28c:	11 24       	eor	r1, r1
+ 28e:	96 95       	lsr	r25
+ 290:	96 95       	lsr	r25
+ 292:	96 95       	lsr	r25
+ 294:	29 2f       	mov	r18, r25
+ 296:	22 0f       	add	r18, r18
+ 298:	32 2f       	mov	r19, r18
+ 29a:	33 0f       	add	r19, r19
+ 29c:	33 0f       	add	r19, r19
+ 29e:	23 0f       	add	r18, r19
+ 2a0:	82 1b       	sub	r24, r18
+}
+ 2a2:	20 e1       	ldi	r18, 0x10	; 16
+ 2a4:	92 9f       	mul	r25, r18
+ 2a6:	80 0d       	add	r24, r0
+ 2a8:	11 24       	eor	r1, r1
+ 2aa:	08 95       	ret
+
+000002ac <RTC_SetTime>:
+*
+* @return	1 = Success
+************************************************************************/
+
+uint8_t RTC_SetTime(uint8_t deviceAddress, uint16_t setYear, uint8_t setMonth, uint8_t setDay, uint8_t setWeekDay, uint8_t setHour, uint8_t isHourPM, uint8_t setMinutes, uint8_t setSeconds)
+{
+ 2ac:	8f 92       	push	r8
+ 2ae:	af 92       	push	r10
+ 2b0:	bf 92       	push	r11
+ 2b2:	cf 92       	push	r12
+ 2b4:	df 92       	push	r13
+ 2b6:	ef 92       	push	r14
+ 2b8:	ff 92       	push	r15
+ 2ba:	0f 93       	push	r16
+ 2bc:	1f 93       	push	r17
+ 2be:	cf 93       	push	r28
+ 2c0:	df 93       	push	r29
+ 2c2:	cd b7       	in	r28, 0x3d	; 61
+ 2c4:	de b7       	in	r29, 0x3e	; 62
+ 2c6:	f8 2e       	mov	r15, r24
+ 2c8:	8b 01       	movw	r16, r22
+ 2ca:	b4 2e       	mov	r11, r20
+ 2cc:	d2 2e       	mov	r13, r18
+#if DEBUGLEVEL > 2
+	UART_writeString("---Disable Osc---\r\n");
+#endif
+
+	//Disable Oscillator
+	RTC_write(deviceAddress, MCP794_RTCSEC, 0);  //This also results in seconds going to zero - does not matter as we set them later
+ 2ce:	40 e0       	ldi	r20, 0x00	; 0
+ 2d0:	60 e0       	ldi	r22, 0x00	; 0
+ 2d2:	0e 94 d2 00 	call	0x1a4	; 0x1a4 <RTC_write>
+	
+	//Send START Condition
+	result = I2C_sendStart();
+ 2d6:	0e 94 8c 00 	call	0x118	; 0x118 <I2C_sendStart>
+
+#if DEBUGLEVEL > 2
+	UART_writeString("---Year---\r\n");
+#endif
+	//---Year
+	result = I2C_send(deviceAddress|TW_WRITE);  //Send the device Address with WRITE
+ 2da:	8f 2d       	mov	r24, r15
+ 2dc:	0e 94 9c 00 	call	0x138	; 0x138 <I2C_send>
+	result = I2C_send(MCP794_RTCYEAR);			//Register
+ 2e0:	86 e0       	ldi	r24, 0x06	; 6
+ 2e2:	0e 94 9c 00 	call	0x138	; 0x138 <I2C_send>
+	//Only interested in last 2 digits of year:
+	if (setYear > 99)
+ 2e6:	04 36       	cpi	r16, 0x64	; 100
+ 2e8:	11 05       	cpc	r17, r1
+ 2ea:	78 f0       	brcs	.+30     	; 0x30a <RTC_SetTime+0x5e>
+	{
+		sendData = setYear % 100;
+ 2ec:	98 01       	movw	r18, r16
+ 2ee:	36 95       	lsr	r19
+ 2f0:	27 95       	ror	r18
+ 2f2:	36 95       	lsr	r19
+ 2f4:	27 95       	ror	r18
+ 2f6:	ab e7       	ldi	r26, 0x7B	; 123
+ 2f8:	b4 e1       	ldi	r27, 0x14	; 20
+ 2fa:	0e 94 9b 04 	call	0x936	; 0x936 <__umulhisi3>
+ 2fe:	96 95       	lsr	r25
+ 300:	87 95       	ror	r24
+ 302:	24 e6       	ldi	r18, 0x64	; 100
+ 304:	82 9f       	mul	r24, r18
+ 306:	00 19       	sub	r16, r0
+ 308:	11 24       	eor	r1, r1
+	}
+	else
+	{
+		sendData = setYear;
+	}
+	result = I2C_send(decToBcd(sendData));
+ 30a:	80 2f       	mov	r24, r16
+ 30c:	0e 94 43 01 	call	0x286	; 0x286 <decToBcd>
+ 310:	0e 94 9c 00 	call	0x138	; 0x138 <I2C_send>
+
+#if DEBUGLEVEL > 2
+	UART_writeString("---Month---\r\n");
+#endif
+	//---Month
+	result = I2C_sendStart();
+ 314:	0e 94 8c 00 	call	0x118	; 0x118 <I2C_sendStart>
+	result = I2C_send(deviceAddress|TW_WRITE);  //Send the device Address with WRITE
+ 318:	8f 2d       	mov	r24, r15
+ 31a:	0e 94 9c 00 	call	0x138	; 0x138 <I2C_send>
+	result = I2C_send(MCP794_RTCMTH);			//Register
+ 31e:	85 e0       	ldi	r24, 0x05	; 5
+ 320:	0e 94 9c 00 	call	0x138	; 0x138 <I2C_send>
+	result = I2C_send(decToBcd(setMonth));		//Value
+ 324:	8b 2d       	mov	r24, r11
+ 326:	0e 94 43 01 	call	0x286	; 0x286 <decToBcd>
+ 32a:	0e 94 9c 00 	call	0x138	; 0x138 <I2C_send>
+
+#if DEBUGLEVEL > 2
+	UART_writeString("---Date---\r\n");
+#endif
+	//---Date
+	result = I2C_sendStart();
+ 32e:	0e 94 8c 00 	call	0x118	; 0x118 <I2C_sendStart>
+	result = I2C_send(deviceAddress|TW_WRITE);  //Send the device Address with WRITE
+ 332:	8f 2d       	mov	r24, r15
+ 334:	0e 94 9c 00 	call	0x138	; 0x138 <I2C_send>
+	result = I2C_send(MCP794_RTCDATE);			//Register
+ 338:	84 e0       	ldi	r24, 0x04	; 4
+ 33a:	0e 94 9c 00 	call	0x138	; 0x138 <I2C_send>
+	result = I2C_send(decToBcd(setDay));		//Value
+ 33e:	8d 2d       	mov	r24, r13
+ 340:	0e 94 43 01 	call	0x286	; 0x286 <decToBcd>
+ 344:	0e 94 9c 00 	call	0x138	; 0x138 <I2C_send>
+
+#if DEBUGLEVEL > 2
+	UART_writeString("---Hour---\r\n");
+#endif
+	//---Hour
+	result = I2C_sendStart();
+ 348:	0e 94 8c 00 	call	0x118	; 0x118 <I2C_sendStart>
+	result = I2C_send(deviceAddress|TW_WRITE);  //Send the device Address with WRITE
+ 34c:	8f 2d       	mov	r24, r15
+ 34e:	0e 94 9c 00 	call	0x138	; 0x138 <I2C_send>
+	result = I2C_send(MCP794_RTCHOUR);			//Register
+ 352:	82 e0       	ldi	r24, 0x02	; 2
+ 354:	0e 94 9c 00 	call	0x138	; 0x138 <I2C_send>
+	if (setting24Hour)	//If 24 Hour format:
+ 358:	80 91 00 01 	lds	r24, 0x0100
+ 35c:	88 23       	and	r24, r24
+ 35e:	31 f0       	breq	.+12     	; 0x36c <RTC_SetTime+0xc0>
+	{
+		result = I2C_send(decToBcd(setHour));		//Value - include 12/24-hour format
+ 360:	8e 2d       	mov	r24, r14
+ 362:	0e 94 43 01 	call	0x286	; 0x286 <decToBcd>
+ 366:	0e 94 9c 00 	call	0x138	; 0x138 <I2C_send>
+ 36a:	10 c0       	rjmp	.+32     	; 0x38c <RTC_SetTime+0xe0>
+	}
+	else  //12-hour format
+	{
+		if (setHour > 12)	//Check the passed hour is actually 12-hr format
+ 36c:	8c e0       	ldi	r24, 0x0C	; 12
+ 36e:	8e 15       	cp	r24, r14
+ 370:	10 f4       	brcc	.+4      	; 0x376 <RTC_SetTime+0xca>
+		{
+			sendData = setHour - 12;
+ 372:	04 ef       	ldi	r16, 0xF4	; 244
+ 374:	0e 0d       	add	r16, r14
+		}
+		result = I2C_send(decToBcd(sendData) | (1 << MCP794_12_24) | (isHourPM << MCP794_AM_PM));		//Value - include 12/24-hour format
+ 376:	80 2f       	mov	r24, r16
+ 378:	0e 94 43 01 	call	0x286	; 0x286 <decToBcd>
+ 37c:	90 e2       	ldi	r25, 0x20	; 32
+ 37e:	c9 9e       	mul	r12, r25
+ 380:	90 01       	movw	r18, r0
+ 382:	11 24       	eor	r1, r1
+ 384:	20 64       	ori	r18, 0x40	; 64
+ 386:	82 2b       	or	r24, r18
+ 388:	0e 94 9c 00 	call	0x138	; 0x138 <I2C_send>
+#if DEBUGLEVEL > 2
+	UART_writeString("---Minute---\r\n");
+#endif
+	
+	//---Minutes
+	result = I2C_sendStart();
+ 38c:	0e 94 8c 00 	call	0x118	; 0x118 <I2C_sendStart>
+	result = I2C_send(deviceAddress|TW_WRITE);  //Send the device Address with WRITE
+ 390:	8f 2d       	mov	r24, r15
+ 392:	0e 94 9c 00 	call	0x138	; 0x138 <I2C_send>
+	result = I2C_send(MCP794_RTCMIN);			//Register
+ 396:	81 e0       	ldi	r24, 0x01	; 1
+ 398:	0e 94 9c 00 	call	0x138	; 0x138 <I2C_send>
+	result = I2C_send(decToBcd(setMinutes));		//Value
+ 39c:	8a 2d       	mov	r24, r10
+ 39e:	0e 94 43 01 	call	0x286	; 0x286 <decToBcd>
+ 3a2:	0e 94 9c 00 	call	0x138	; 0x138 <I2C_send>
+
+#if DEBUGLEVEL > 2
+	UART_writeString("---Second---\r\n");
+#endif
+	//---Seconds
+	result = I2C_sendStart();
+ 3a6:	0e 94 8c 00 	call	0x118	; 0x118 <I2C_sendStart>
+	result = I2C_send(deviceAddress|TW_WRITE);  //Send the device Address with WRITE
+ 3aa:	8f 2d       	mov	r24, r15
+ 3ac:	0e 94 9c 00 	call	0x138	; 0x138 <I2C_send>
+	result = I2C_send(MCP794_RTCSEC);			//Register
+ 3b0:	80 e0       	ldi	r24, 0x00	; 0
+ 3b2:	0e 94 9c 00 	call	0x138	; 0x138 <I2C_send>
+	result = I2C_send(decToBcd(setSeconds) | (1<<MCP794_ST));		//Value - Also start oscillator
+ 3b6:	88 2d       	mov	r24, r8
+ 3b8:	0e 94 43 01 	call	0x286	; 0x286 <decToBcd>
+ 3bc:	80 68       	ori	r24, 0x80	; 128
+ 3be:	0e 94 9c 00 	call	0x138	; 0x138 <I2C_send>
+ 3c2:	18 2f       	mov	r17, r24
+
+#if DEBUGLEVEL > 2
+	UART_writeString("---SendStop---\r\n");
+#endif
+	//Send STOP Condition
+	I2C_sendStop();
+ 3c4:	0e 94 82 00 	call	0x104	; 0x104 <I2C_sendStop>
+ 3c8:	2f ef       	ldi	r18, 0xFF	; 255
+ 3ca:	81 ee       	ldi	r24, 0xE1	; 225
+ 3cc:	94 e0       	ldi	r25, 0x04	; 4
+ 3ce:	21 50       	subi	r18, 0x01	; 1
+ 3d0:	80 40       	sbci	r24, 0x00	; 0
+ 3d2:	90 40       	sbci	r25, 0x00	; 0
+ 3d4:	e1 f7       	brne	.-8      	; 0x3ce <RTC_SetTime+0x122>
+ 3d6:	00 c0       	rjmp	.+0      	; 0x3d8 <RTC_SetTime+0x12c>
+ 3d8:	00 00       	nop
+
+	_delay_ms(100);	//Wait for oscilator to start
+
+	returnResult = result;
+	return returnResult;
+}
+ 3da:	81 2f       	mov	r24, r17
+ 3dc:	df 91       	pop	r29
+ 3de:	cf 91       	pop	r28
+ 3e0:	1f 91       	pop	r17
+ 3e2:	0f 91       	pop	r16
+ 3e4:	ff 90       	pop	r15
+ 3e6:	ef 90       	pop	r14
+ 3e8:	df 90       	pop	r13
+ 3ea:	cf 90       	pop	r12
+ 3ec:	bf 90       	pop	r11
+ 3ee:	af 90       	pop	r10
+ 3f0:	8f 90       	pop	r8
+ 3f2:	08 95       	ret
+
+000003f4 <bcdToDec>:
+*
+* @return	byte containing the BCD value
+************************************************************************/
+uint8_t bcdToDec(uint8_t val)
+{
+	return ( (val / 16 * 10) + (val % 16) );
+ 3f4:	98 2f       	mov	r25, r24
+ 3f6:	92 95       	swap	r25
+ 3f8:	9f 70       	andi	r25, 0x0F	; 15
+ 3fa:	99 0f       	add	r25, r25
+ 3fc:	29 2f       	mov	r18, r25
+ 3fe:	22 0f       	add	r18, r18
+ 400:	22 0f       	add	r18, r18
+ 402:	92 0f       	add	r25, r18
+ 404:	8f 70       	andi	r24, 0x0F	; 15
+}
+ 406:	89 0f       	add	r24, r25
+ 408:	08 95       	ret
+
+0000040a <RTC_GetTime>:
+*
+* @return	1 = Success
+************************************************************************/
+
+uint8_t RTC_GetTime(uint8_t deviceAddress, uint16_t *getYear, uint8_t *getMonth, uint8_t *getDay, uint8_t *getWeekDay, uint8_t *getHour, uint8_t *isHourPM, uint8_t *getMinutes, uint8_t *getSeconds)
+{
+ 40a:	2f 92       	push	r2
+ 40c:	3f 92       	push	r3
+ 40e:	4f 92       	push	r4
+ 410:	5f 92       	push	r5
+ 412:	6f 92       	push	r6
+ 414:	7f 92       	push	r7
+ 416:	8f 92       	push	r8
+ 418:	9f 92       	push	r9
+ 41a:	af 92       	push	r10
+ 41c:	bf 92       	push	r11
+ 41e:	cf 92       	push	r12
+ 420:	df 92       	push	r13
+ 422:	ef 92       	push	r14
+ 424:	ff 92       	push	r15
+ 426:	0f 93       	push	r16
+ 428:	1f 93       	push	r17
+ 42a:	cf 93       	push	r28
+ 42c:	df 93       	push	r29
+ 42e:	cd b7       	in	r28, 0x3d	; 61
+ 430:	de b7       	in	r29, 0x3e	; 62
+ 432:	18 2f       	mov	r17, r24
+ 434:	3b 01       	movw	r6, r22
+ 436:	2a 01       	movw	r4, r20
+ 438:	19 01       	movw	r2, r18
+	uint8_t readData = 0;
+	
+	//We need to retrieve the entire date/time in one read, so as to prevent time roll-overs and errors
+	
+	//Send START Condition.
+	result = I2C_sendStart();
+ 43a:	0e 94 8c 00 	call	0x118	; 0x118 <I2C_sendStart>
+	
+	//---Year
+	#if DEBUGLEVEL > 2
+	UART_writeString("---Year---\r\n");
+	#endif
+	result = I2C_send(deviceAddress|TW_WRITE);  //Send the device Address with WRITE
+ 43e:	81 2f       	mov	r24, r17
+ 440:	0e 94 9c 00 	call	0x138	; 0x138 <I2C_send>
+	result = I2C_send(MCP794_RTCYEAR);			//Register
+ 444:	86 e0       	ldi	r24, 0x06	; 6
+ 446:	0e 94 9c 00 	call	0x138	; 0x138 <I2C_send>
+	result = I2C_sendStart();					//Restart - now we're going to do a read operation
+ 44a:	0e 94 8c 00 	call	0x118	; 0x118 <I2C_sendStart>
+	result = I2C_send(deviceAddress|TW_READ);  //Send the device Address with READ
+ 44e:	01 2f       	mov	r16, r17
+ 450:	01 60       	ori	r16, 0x01	; 1
+ 452:	80 2f       	mov	r24, r16
+ 454:	0e 94 9c 00 	call	0x138	; 0x138 <I2C_send>
+	readData = I2C_read(0);
+ 458:	80 e0       	ldi	r24, 0x00	; 0
+ 45a:	0e 94 a7 00 	call	0x14e	; 0x14e <I2C_read>
+	*getYear = bcdToDec(readData);
+ 45e:	0e 94 fa 01 	call	0x3f4	; 0x3f4 <bcdToDec>
+ 462:	90 e0       	ldi	r25, 0x00	; 0
+ 464:	f3 01       	movw	r30, r6
+ 466:	91 83       	std	Z+1, r25	; 0x01
+ 468:	80 83       	st	Z, r24
+
+	//---Month
+	#if DEBUGLEVEL > 2
+	UART_writeString("---Month---\r\n");
+	#endif
+	result = I2C_sendStart();					//Restart - now we're going to do a Write operation
+ 46a:	0e 94 8c 00 	call	0x118	; 0x118 <I2C_sendStart>
+	result = I2C_send(deviceAddress|TW_WRITE);  //Send the device Address with WRITE
+ 46e:	81 2f       	mov	r24, r17
+ 470:	0e 94 9c 00 	call	0x138	; 0x138 <I2C_send>
+	result = I2C_send(MCP794_RTCMTH);			//Register
+ 474:	85 e0       	ldi	r24, 0x05	; 5
+ 476:	0e 94 9c 00 	call	0x138	; 0x138 <I2C_send>
+	result = I2C_sendStart();					//Restart - now we're going to do a read operation
+ 47a:	0e 94 8c 00 	call	0x118	; 0x118 <I2C_sendStart>
+	result = I2C_send(deviceAddress|TW_READ);	//Send the device Address with READ
+ 47e:	80 2f       	mov	r24, r16
+ 480:	0e 94 9c 00 	call	0x138	; 0x138 <I2C_send>
+	readData = I2C_read(0) & MCP794_MASK_Month;	//Read the data
+ 484:	80 e0       	ldi	r24, 0x00	; 0
+ 486:	0e 94 a7 00 	call	0x14e	; 0x14e <I2C_read>
+	*getMonth = bcdToDec(readData);				//Convert from BCD to Integer
+ 48a:	8f 71       	andi	r24, 0x1F	; 31
+ 48c:	0e 94 fa 01 	call	0x3f4	; 0x3f4 <bcdToDec>
+ 490:	f2 01       	movw	r30, r4
+ 492:	80 83       	st	Z, r24
+
+	//---Date
+	#if DEBUGLEVEL > 2
+	UART_writeString("---Day---\r\n");
+	#endif
+	result = I2C_sendStart();
+ 494:	0e 94 8c 00 	call	0x118	; 0x118 <I2C_sendStart>
+	result = I2C_send(deviceAddress|TW_WRITE);  //Send the device Address with WRITE
+ 498:	81 2f       	mov	r24, r17
+ 49a:	0e 94 9c 00 	call	0x138	; 0x138 <I2C_send>
+	result = I2C_send(MCP794_RTCDATE);			//Register
+ 49e:	84 e0       	ldi	r24, 0x04	; 4
+ 4a0:	0e 94 9c 00 	call	0x138	; 0x138 <I2C_send>
+	result = I2C_sendStart();					//Restart - now we're going to do a read operation
+ 4a4:	0e 94 8c 00 	call	0x118	; 0x118 <I2C_sendStart>
+	result = I2C_send(deviceAddress|TW_READ);	//Send the device Address with READ
+ 4a8:	80 2f       	mov	r24, r16
+ 4aa:	0e 94 9c 00 	call	0x138	; 0x138 <I2C_send>
+	readData = I2C_read(0);						//Read the data
+ 4ae:	80 e0       	ldi	r24, 0x00	; 0
+ 4b0:	0e 94 a7 00 	call	0x14e	; 0x14e <I2C_read>
+	*getDay = bcdToDec(readData);				//Convert from BCD to Integer
+ 4b4:	0e 94 fa 01 	call	0x3f4	; 0x3f4 <bcdToDec>
+ 4b8:	f1 01       	movw	r30, r2
+ 4ba:	80 83       	st	Z, r24
+
+	//---Hour
+	#if DEBUGLEVEL > 2
+	UART_writeString("---Hour---\r\n");
+	#endif
+	result = I2C_sendStart();
+ 4bc:	0e 94 8c 00 	call	0x118	; 0x118 <I2C_sendStart>
+	result = I2C_send(deviceAddress|TW_WRITE);  //Send the device Address with WRITE
+ 4c0:	81 2f       	mov	r24, r17
+ 4c2:	0e 94 9c 00 	call	0x138	; 0x138 <I2C_send>
+	result = I2C_send(MCP794_RTCHOUR);			//Register
+ 4c6:	82 e0       	ldi	r24, 0x02	; 2
+ 4c8:	0e 94 9c 00 	call	0x138	; 0x138 <I2C_send>
+	result = I2C_sendStart();					//Restart - now we're going to do a read operation
+ 4cc:	0e 94 8c 00 	call	0x118	; 0x118 <I2C_sendStart>
+	result = I2C_send(deviceAddress|TW_READ);	//Send the device Address with READ
+ 4d0:	80 2f       	mov	r24, r16
+ 4d2:	0e 94 9c 00 	call	0x138	; 0x138 <I2C_send>
+	readData = I2C_read(0);						//Read the data
+ 4d6:	80 e0       	ldi	r24, 0x00	; 0
+ 4d8:	0e 94 a7 00 	call	0x14e	; 0x14e <I2C_read>
+ 4dc:	78 2e       	mov	r7, r24
+	
+	if (readData & (1<<MCP794_12_24))	//Is 12-hour format
+ 4de:	86 ff       	sbrs	r24, 6
+ 4e0:	23 c0       	rjmp	.+70     	; 0x528 <RTC_GetTime+0x11e>
+	{
+		UART_writeString("\r\n12 Hour Masked = ");
+ 4e2:	8f e1       	ldi	r24, 0x1F	; 31
+ 4e4:	91 e0       	ldi	r25, 0x01	; 1
+ 4e6:	0e 94 ee 03 	call	0x7dc	; 0x7dc <UART_writeString>
+		UART_printDecimal(readData & MCP794_MASK_12Hour,0);
+ 4ea:	f7 2d       	mov	r31, r7
+ 4ec:	ff 71       	andi	r31, 0x1F	; 31
+ 4ee:	6f 2e       	mov	r6, r31
+ 4f0:	60 e0       	ldi	r22, 0x00	; 0
+ 4f2:	8f 2f       	mov	r24, r31
+ 4f4:	90 e0       	ldi	r25, 0x00	; 0
+ 4f6:	0e 94 fd 03 	call	0x7fa	; 0x7fa <UART_printDecimal>
+		UART_writeString("\r\n12 Hour Converted = ");
+ 4fa:	83 e3       	ldi	r24, 0x33	; 51
+ 4fc:	91 e0       	ldi	r25, 0x01	; 1
+ 4fe:	0e 94 ee 03 	call	0x7dc	; 0x7dc <UART_writeString>
+		UART_printDecimal(bcdToDec(readData & MCP794_MASK_12Hour),0);
+ 502:	86 2d       	mov	r24, r6
+ 504:	0e 94 fa 01 	call	0x3f4	; 0x3f4 <bcdToDec>
+ 508:	68 2e       	mov	r6, r24
+ 50a:	60 e0       	ldi	r22, 0x00	; 0
+ 50c:	90 e0       	ldi	r25, 0x00	; 0
+ 50e:	0e 94 fd 03 	call	0x7fa	; 0x7fa <UART_printDecimal>
+		UART_writeString("\r\n");
+ 512:	86 ea       	ldi	r24, 0xA6	; 166
+ 514:	91 e0       	ldi	r25, 0x01	; 1
+ 516:	0e 94 ee 03 	call	0x7dc	; 0x7dc <UART_writeString>
+		*isHourPM = readData & MCP794_AM_PM;	//Mask out the AM/PM
+ 51a:	87 2d       	mov	r24, r7
+ 51c:	85 70       	andi	r24, 0x05	; 5
+ 51e:	f6 01       	movw	r30, r12
+ 520:	80 83       	st	Z, r24
+		*getHour = bcdToDec(readData & MCP794_MASK_12Hour);	//Mask out the 12-hour time
+ 522:	f7 01       	movw	r30, r14
+ 524:	60 82       	st	Z, r6
+ 526:	07 c0       	rjmp	.+14     	; 0x536 <RTC_GetTime+0x12c>
+	}
+	else
+	{
+		*isHourPM = 0;
+ 528:	f6 01       	movw	r30, r12
+ 52a:	10 82       	st	Z, r1
+		*getHour = bcdToDec(readData & MCP794_MASK_24Hour);	//Mask out the 24-hour time
+ 52c:	8f 73       	andi	r24, 0x3F	; 63
+ 52e:	0e 94 fa 01 	call	0x3f4	; 0x3f4 <bcdToDec>
+ 532:	f7 01       	movw	r30, r14
+ 534:	80 83       	st	Z, r24
+
+	//---Minutes
+	#if DEBUGLEVEL > 2
+	UART_writeString("---Minutes---\r\n");
+	#endif
+	result = I2C_sendStart();					//Restart - now we're going to do a Write operation
+ 536:	0e 94 8c 00 	call	0x118	; 0x118 <I2C_sendStart>
+	result = I2C_send(deviceAddress|TW_WRITE);  //Send the device Address with WRITE
+ 53a:	81 2f       	mov	r24, r17
+ 53c:	0e 94 9c 00 	call	0x138	; 0x138 <I2C_send>
+	result = I2C_send(MCP794_RTCMIN);			//Register
+ 540:	81 e0       	ldi	r24, 0x01	; 1
+ 542:	0e 94 9c 00 	call	0x138	; 0x138 <I2C_send>
+	result = I2C_sendStart();					//Restart - now we're going to do a read operation
+ 546:	0e 94 8c 00 	call	0x118	; 0x118 <I2C_sendStart>
+	result = I2C_send(deviceAddress|TW_READ);	//Send the device Address with READ
+ 54a:	80 2f       	mov	r24, r16
+ 54c:	0e 94 9c 00 	call	0x138	; 0x138 <I2C_send>
+	readData = I2C_read(0);						//Read the data
+ 550:	80 e0       	ldi	r24, 0x00	; 0
+ 552:	0e 94 a7 00 	call	0x14e	; 0x14e <I2C_read>
+	*getMinutes = bcdToDec(readData);				//Convert from BCD to Integer
+ 556:	0e 94 fa 01 	call	0x3f4	; 0x3f4 <bcdToDec>
+ 55a:	f5 01       	movw	r30, r10
+ 55c:	80 83       	st	Z, r24
+
+	//---Seconds
+	#if DEBUGLEVEL > 2
+	UART_writeString("---Seconds---\r\n");
+	#endif
+	result = I2C_sendStart();					//Restart - now we're going to do a Write operation
+ 55e:	0e 94 8c 00 	call	0x118	; 0x118 <I2C_sendStart>
+	result = I2C_send(deviceAddress|TW_WRITE);  //Send the device Address with WRITE
+ 562:	81 2f       	mov	r24, r17
+ 564:	0e 94 9c 00 	call	0x138	; 0x138 <I2C_send>
+	result = I2C_send(MCP794_RTCSEC);			//Register
+ 568:	80 e0       	ldi	r24, 0x00	; 0
+ 56a:	0e 94 9c 00 	call	0x138	; 0x138 <I2C_send>
+	result = I2C_sendStart();					//Restart - now we're going to do a read operation
+ 56e:	0e 94 8c 00 	call	0x118	; 0x118 <I2C_sendStart>
+	result = I2C_send(deviceAddress|TW_READ);	//Send the device Address with READ
+ 572:	80 2f       	mov	r24, r16
+ 574:	0e 94 9c 00 	call	0x138	; 0x138 <I2C_send>
+ 578:	18 2f       	mov	r17, r24
+	readData = I2C_read(0);						//Read the data
+ 57a:	80 e0       	ldi	r24, 0x00	; 0
+ 57c:	0e 94 a7 00 	call	0x14e	; 0x14e <I2C_read>
+	*getSeconds = bcdToDec(readData & MCP794_MASK_Second);			//Convert from BCD to Integer
+ 580:	8f 77       	andi	r24, 0x7F	; 127
+ 582:	0e 94 fa 01 	call	0x3f4	; 0x3f4 <bcdToDec>
+ 586:	f4 01       	movw	r30, r8
+ 588:	80 83       	st	Z, r24
+
+
+	//Send STOP Condition
+	I2C_sendStop();
+ 58a:	0e 94 82 00 	call	0x104	; 0x104 <I2C_sendStop>
+ 58e:	8f e3       	ldi	r24, 0x3F	; 63
+ 590:	9c e9       	ldi	r25, 0x9C	; 156
+ 592:	01 97       	sbiw	r24, 0x01	; 1
+ 594:	f1 f7       	brne	.-4      	; 0x592 <RTC_GetTime+0x188>
+ 596:	00 c0       	rjmp	.+0      	; 0x598 <RTC_GetTime+0x18e>
+ 598:	00 00       	nop
+
+	_delay_ms(10);	//Wait for oscilator to start
+
+	returnResult = result;
+	return returnResult;
+}
+ 59a:	81 2f       	mov	r24, r17
+ 59c:	df 91       	pop	r29
+ 59e:	cf 91       	pop	r28
+ 5a0:	1f 91       	pop	r17
+ 5a2:	0f 91       	pop	r16
+ 5a4:	ff 90       	pop	r15
+ 5a6:	ef 90       	pop	r14
+ 5a8:	df 90       	pop	r13
+ 5aa:	cf 90       	pop	r12
+ 5ac:	bf 90       	pop	r11
+ 5ae:	af 90       	pop	r10
+ 5b0:	9f 90       	pop	r9
+ 5b2:	8f 90       	pop	r8
+ 5b4:	7f 90       	pop	r7
+ 5b6:	6f 90       	pop	r6
+ 5b8:	5f 90       	pop	r5
+ 5ba:	4f 90       	pop	r4
+ 5bc:	3f 90       	pop	r3
+ 5be:	2f 90       	pop	r2
+ 5c0:	08 95       	ret
+
+000005c2 <main>:
+
+int main(void)
+{
+	
+	//Initialise the UART
+	UART_Init(9600);
+ 5c2:	80 e8       	ldi	r24, 0x80	; 128
+ 5c4:	95 e2       	ldi	r25, 0x25	; 37
+ 5c6:	0e 94 c3 03 	call	0x786	; 0x786 <UART_Init>
+	UART_writeString("Welcome\r\n");
+ 5ca:	8a e4       	ldi	r24, 0x4A	; 74
+ 5cc:	91 e0       	ldi	r25, 0x01	; 1
+ 5ce:	0e 94 ee 03 	call	0x7dc	; 0x7dc <UART_writeString>
+	
+	//Initialise the I2C Interface at 200kHz
+	I2C_init(200);
+ 5d2:	88 ec       	ldi	r24, 0xC8	; 200
+ 5d4:	0e 94 53 00 	call	0xa6	; 0xa6 <I2C_init>
+	
+	//Initialise the RTC, and show whether oscillator started successfully
+	if (RTC_Init(RTC_ADDRESS, 1, 1))
+ 5d8:	41 e0       	ldi	r20, 0x01	; 1
+ 5da:	61 e0       	ldi	r22, 0x01	; 1
+ 5dc:	8e ed       	ldi	r24, 0xDE	; 222
+ 5de:	0e 94 0c 01 	call	0x218	; 0x218 <RTC_Init>
+ 5e2:	88 23       	and	r24, r24
+ 5e4:	29 f0       	breq	.+10     	; 0x5f0 <main+0x2e>
+	{
+		UART_writeString("Oscillator is Running\r\n");
+ 5e6:	84 e5       	ldi	r24, 0x54	; 84
+ 5e8:	91 e0       	ldi	r25, 0x01	; 1
+ 5ea:	0e 94 ee 03 	call	0x7dc	; 0x7dc <UART_writeString>
+ 5ee:	04 c0       	rjmp	.+8      	; 0x5f8 <main+0x36>
+	}
+	else
+	{
+		UART_writeString("ERROR: Oscillator did NOT start\r\n");
+ 5f0:	8c e6       	ldi	r24, 0x6C	; 108
+ 5f2:	91 e0       	ldi	r25, 0x01	; 1
+ 5f4:	0e 94 ee 03 	call	0x7dc	; 0x7dc <UART_writeString>
+	}
+	
+	
+	//Read the Time from the RTC
+	tempVar = RTC_GetTime(RTC_ADDRESS, &timeYear, &timeMonth, &timeDay, &timeWeekDay, &timeHr, &timeAmPm, &timeMin, &timeSec);	
+ 5f8:	0f 2e       	mov	r0, r31
+ 5fa:	fc ec       	ldi	r31, 0xCC	; 204
+ 5fc:	8f 2e       	mov	r8, r31
+ 5fe:	f1 e0       	ldi	r31, 0x01	; 1
+ 600:	9f 2e       	mov	r9, r31
+ 602:	f0 2d       	mov	r31, r0
+ 604:	0f 2e       	mov	r0, r31
+ 606:	fb ec       	ldi	r31, 0xCB	; 203
+ 608:	af 2e       	mov	r10, r31
+ 60a:	f1 e0       	ldi	r31, 0x01	; 1
+ 60c:	bf 2e       	mov	r11, r31
+ 60e:	f0 2d       	mov	r31, r0
+ 610:	0f 2e       	mov	r0, r31
+ 612:	f4 ec       	ldi	r31, 0xC4	; 196
+ 614:	cf 2e       	mov	r12, r31
+ 616:	f1 e0       	ldi	r31, 0x01	; 1
+ 618:	df 2e       	mov	r13, r31
+ 61a:	f0 2d       	mov	r31, r0
+ 61c:	0f 2e       	mov	r0, r31
+ 61e:	fa ec       	ldi	r31, 0xCA	; 202
+ 620:	ef 2e       	mov	r14, r31
+ 622:	f1 e0       	ldi	r31, 0x01	; 1
+ 624:	ff 2e       	mov	r15, r31
+ 626:	f0 2d       	mov	r31, r0
+ 628:	08 ec       	ldi	r16, 0xC8	; 200
+ 62a:	11 e0       	ldi	r17, 0x01	; 1
+ 62c:	29 ec       	ldi	r18, 0xC9	; 201
+ 62e:	31 e0       	ldi	r19, 0x01	; 1
+ 630:	47 ec       	ldi	r20, 0xC7	; 199
+ 632:	51 e0       	ldi	r21, 0x01	; 1
+ 634:	65 ec       	ldi	r22, 0xC5	; 197
+ 636:	71 e0       	ldi	r23, 0x01	; 1
+ 638:	8e ed       	ldi	r24, 0xDE	; 222
+ 63a:	0e 94 05 02 	call	0x40a	; 0x40a <RTC_GetTime>
+ 63e:	80 93 cd 01 	sts	0x01CD, r24
+	
+	//If Year is one and month is one and day is one, assume time not set (these are the Power-On-Reset values).
+	//Set the Time
+	if ((timeYear == 1) && (timeMonth ==1) && (timeDay == 1))
+ 642:	80 91 c5 01 	lds	r24, 0x01C5
+ 646:	90 91 c6 01 	lds	r25, 0x01C6
+ 64a:	01 97       	sbiw	r24, 0x01	; 1
+ 64c:	01 f5       	brne	.+64     	; 0x68e <main+0xcc>
+ 64e:	80 91 c7 01 	lds	r24, 0x01C7
+ 652:	81 30       	cpi	r24, 0x01	; 1
+ 654:	e1 f4       	brne	.+56     	; 0x68e <main+0xcc>
+ 656:	80 91 c9 01 	lds	r24, 0x01C9
+ 65a:	81 30       	cpi	r24, 0x01	; 1
+ 65c:	c1 f4       	brne	.+48     	; 0x68e <main+0xcc>
+	{
+		tempVar = RTC_SetTime(RTC_ADDRESS, 15,12,31,5,23,1,59,15);
+ 65e:	0f 2e       	mov	r0, r31
+ 660:	ff e0       	ldi	r31, 0x0F	; 15
+ 662:	8f 2e       	mov	r8, r31
+ 664:	f0 2d       	mov	r31, r0
+ 666:	0f 2e       	mov	r0, r31
+ 668:	fb e3       	ldi	r31, 0x3B	; 59
+ 66a:	af 2e       	mov	r10, r31
+ 66c:	f0 2d       	mov	r31, r0
+ 66e:	cc 24       	eor	r12, r12
+ 670:	c3 94       	inc	r12
+ 672:	0f 2e       	mov	r0, r31
+ 674:	f7 e1       	ldi	r31, 0x17	; 23
+ 676:	ef 2e       	mov	r14, r31
+ 678:	f0 2d       	mov	r31, r0
+ 67a:	05 e0       	ldi	r16, 0x05	; 5
+ 67c:	2f e1       	ldi	r18, 0x1F	; 31
+ 67e:	4c e0       	ldi	r20, 0x0C	; 12
+ 680:	6f e0       	ldi	r22, 0x0F	; 15
+ 682:	70 e0       	ldi	r23, 0x00	; 0
+ 684:	8e ed       	ldi	r24, 0xDE	; 222
+ 686:	0e 94 56 01 	call	0x2ac	; 0x2ac <RTC_SetTime>
+ 68a:	80 93 cd 01 	sts	0x01CD, r24
+	}
+	
+
+	//Check if Oscillator Running after time was set
+	tempVar = RTC_read(RTC_ADDRESS, MCP794_RTCWKDAY);	
+ 68e:	63 e0       	ldi	r22, 0x03	; 3
+ 690:	8e ed       	ldi	r24, 0xDE	; 222
+ 692:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <RTC_read>
+ 696:	80 93 cd 01 	sts	0x01CD, r24
+
+	if (!(tempVar & (1<<MCP794_OSCRUN)))
+ 69a:	85 fd       	sbrc	r24, 5
+ 69c:	04 c0       	rjmp	.+8      	; 0x6a6 <main+0xe4>
+	{
+		UART_writeString("Oscillator NOT Running\r\n\r\n");
+ 69e:	8e e8       	ldi	r24, 0x8E	; 142
+ 6a0:	91 e0       	ldi	r25, 0x01	; 1
+ 6a2:	0e 94 ee 03 	call	0x7dc	; 0x7dc <UART_writeString>
+ 6a6:	2f ef       	ldi	r18, 0xFF	; 255
+ 6a8:	83 e2       	ldi	r24, 0x23	; 35
+ 6aa:	94 ef       	ldi	r25, 0xF4	; 244
+ 6ac:	21 50       	subi	r18, 0x01	; 1
+ 6ae:	80 40       	sbci	r24, 0x00	; 0
+ 6b0:	90 40       	sbci	r25, 0x00	; 0
+ 6b2:	e1 f7       	brne	.-8      	; 0x6ac <main+0xea>
+ 6b4:	00 c0       	rjmp	.+0      	; 0x6b6 <main+0xf4>
+ 6b6:	00 00       	nop
+    while(1)
+    {
+		_delay_ms(5000);	//Only read the time every 5 seconds
+		
+		//Read the Time
+		tempVar = RTC_GetTime(RTC_ADDRESS, &timeYear, &timeMonth, &timeDay, &timeWeekDay, &timeHr, &timeAmPm, &timeMin, &timeSec);	//Reset minutes to zero
+ 6b8:	0f 2e       	mov	r0, r31
+ 6ba:	fc ec       	ldi	r31, 0xCC	; 204
+ 6bc:	8f 2e       	mov	r8, r31
+ 6be:	f1 e0       	ldi	r31, 0x01	; 1
+ 6c0:	9f 2e       	mov	r9, r31
+ 6c2:	f0 2d       	mov	r31, r0
+ 6c4:	0f 2e       	mov	r0, r31
+ 6c6:	fb ec       	ldi	r31, 0xCB	; 203
+ 6c8:	af 2e       	mov	r10, r31
+ 6ca:	f1 e0       	ldi	r31, 0x01	; 1
+ 6cc:	bf 2e       	mov	r11, r31
+ 6ce:	f0 2d       	mov	r31, r0
+ 6d0:	0f 2e       	mov	r0, r31
+ 6d2:	f4 ec       	ldi	r31, 0xC4	; 196
+ 6d4:	cf 2e       	mov	r12, r31
+ 6d6:	f1 e0       	ldi	r31, 0x01	; 1
+ 6d8:	df 2e       	mov	r13, r31
+ 6da:	f0 2d       	mov	r31, r0
+ 6dc:	0f 2e       	mov	r0, r31
+ 6de:	fa ec       	ldi	r31, 0xCA	; 202
+ 6e0:	ef 2e       	mov	r14, r31
+ 6e2:	f1 e0       	ldi	r31, 0x01	; 1
+ 6e4:	ff 2e       	mov	r15, r31
+ 6e6:	f0 2d       	mov	r31, r0
+ 6e8:	08 ec       	ldi	r16, 0xC8	; 200
+ 6ea:	11 e0       	ldi	r17, 0x01	; 1
+ 6ec:	29 ec       	ldi	r18, 0xC9	; 201
+ 6ee:	31 e0       	ldi	r19, 0x01	; 1
+ 6f0:	47 ec       	ldi	r20, 0xC7	; 199
+ 6f2:	51 e0       	ldi	r21, 0x01	; 1
+ 6f4:	65 ec       	ldi	r22, 0xC5	; 197
+ 6f6:	71 e0       	ldi	r23, 0x01	; 1
+ 6f8:	8e ed       	ldi	r24, 0xDE	; 222
+ 6fa:	0e 94 05 02 	call	0x40a	; 0x40a <RTC_GetTime>
+ 6fe:	80 93 cd 01 	sts	0x01CD, r24
+		
+		//Print the time over the UART
+		UART_writeString("\r\nTimecheck: ");
+ 702:	89 ea       	ldi	r24, 0xA9	; 169
+ 704:	91 e0       	ldi	r25, 0x01	; 1
+ 706:	0e 94 ee 03 	call	0x7dc	; 0x7dc <UART_writeString>
+		UART_printDecimal(timeDay,2);
+ 70a:	80 91 c9 01 	lds	r24, 0x01C9
+ 70e:	62 e0       	ldi	r22, 0x02	; 2
+ 710:	90 e0       	ldi	r25, 0x00	; 0
+ 712:	0e 94 fd 03 	call	0x7fa	; 0x7fa <UART_printDecimal>
+		UART_writeString("/");
+ 716:	87 eb       	ldi	r24, 0xB7	; 183
+ 718:	91 e0       	ldi	r25, 0x01	; 1
+ 71a:	0e 94 ee 03 	call	0x7dc	; 0x7dc <UART_writeString>
+		UART_printDecimal(timeMonth,2);
+ 71e:	80 91 c7 01 	lds	r24, 0x01C7
+ 722:	62 e0       	ldi	r22, 0x02	; 2
+ 724:	90 e0       	ldi	r25, 0x00	; 0
+ 726:	0e 94 fd 03 	call	0x7fa	; 0x7fa <UART_printDecimal>
+		UART_writeString("/20");
+ 72a:	89 eb       	ldi	r24, 0xB9	; 185
+ 72c:	91 e0       	ldi	r25, 0x01	; 1
+ 72e:	0e 94 ee 03 	call	0x7dc	; 0x7dc <UART_writeString>
+		UART_printDecimal(timeYear,2);
+ 732:	62 e0       	ldi	r22, 0x02	; 2
+ 734:	80 91 c5 01 	lds	r24, 0x01C5
+ 738:	90 91 c6 01 	lds	r25, 0x01C6
+ 73c:	0e 94 fd 03 	call	0x7fa	; 0x7fa <UART_printDecimal>
+		
+		UART_writeString("   ");
+ 740:	8d eb       	ldi	r24, 0xBD	; 189
+ 742:	91 e0       	ldi	r25, 0x01	; 1
+ 744:	0e 94 ee 03 	call	0x7dc	; 0x7dc <UART_writeString>
+		UART_printDecimal(timeHr,2);
+ 748:	80 91 ca 01 	lds	r24, 0x01CA
+ 74c:	62 e0       	ldi	r22, 0x02	; 2
+ 74e:	90 e0       	ldi	r25, 0x00	; 0
+ 750:	0e 94 fd 03 	call	0x7fa	; 0x7fa <UART_printDecimal>
+		UART_writeString(":");
+ 754:	81 ec       	ldi	r24, 0xC1	; 193
+ 756:	91 e0       	ldi	r25, 0x01	; 1
+ 758:	0e 94 ee 03 	call	0x7dc	; 0x7dc <UART_writeString>
+		UART_printDecimal(timeMin,2);
+ 75c:	80 91 cb 01 	lds	r24, 0x01CB
+ 760:	62 e0       	ldi	r22, 0x02	; 2
+ 762:	90 e0       	ldi	r25, 0x00	; 0
+ 764:	0e 94 fd 03 	call	0x7fa	; 0x7fa <UART_printDecimal>
+		UART_writeString(":");
+ 768:	81 ec       	ldi	r24, 0xC1	; 193
+ 76a:	91 e0       	ldi	r25, 0x01	; 1
+ 76c:	0e 94 ee 03 	call	0x7dc	; 0x7dc <UART_writeString>
+		UART_printDecimal(timeSec,2);
+ 770:	80 91 cc 01 	lds	r24, 0x01CC
+ 774:	62 e0       	ldi	r22, 0x02	; 2
+ 776:	90 e0       	ldi	r25, 0x00	; 0
+ 778:	0e 94 fd 03 	call	0x7fa	; 0x7fa <UART_printDecimal>
+		UART_writeString("\r\n");
+ 77c:	86 ea       	ldi	r24, 0xA6	; 166
+ 77e:	91 e0       	ldi	r25, 0x01	; 1
+ 780:	0e 94 ee 03 	call	0x7dc	; 0x7dc <UART_writeString>
+ 784:	90 cf       	rjmp	.-224    	; 0x6a6 <main+0xe4>
+
+00000786 <UART_Init>:
+void UART_Init(uint16_t baudRate)
+{
+	uint16_t my_UBRR;
+
+	//Calculate the value of the UBRR register, to set the Baud Rate
+	my_UBRR = (F_CPU/16UL/baudRate) - 1;
+ 786:	9c 01       	movw	r18, r24
+ 788:	40 e0       	ldi	r20, 0x00	; 0
+ 78a:	50 e0       	ldi	r21, 0x00	; 0
+ 78c:	60 e4       	ldi	r22, 0x40	; 64
+ 78e:	72 e4       	ldi	r23, 0x42	; 66
+ 790:	8f e0       	ldi	r24, 0x0F	; 15
+ 792:	90 e0       	ldi	r25, 0x00	; 0
+ 794:	0e 94 79 04 	call	0x8f2	; 0x8f2 <__udivmodsi4>
+ 798:	21 50       	subi	r18, 0x01	; 1
+ 79a:	31 09       	sbc	r19, r1
+
+	//Set the Baud ratee
+	UBRR0H = (unsigned char)(my_UBRR >> 8);		//Set the High register
+ 79c:	30 93 c5 00 	sts	0x00C5, r19
+	UBRR0L = (unsigned char)my_UBRR;			//Set the Low register
+ 7a0:	20 93 c4 00 	sts	0x00C4, r18
+
+	//Stop Bit: 1 - ensure bit is unset (incase it was set before)
+	UCSR0C &= ~(1<<USBS0);
+ 7a4:	e2 ec       	ldi	r30, 0xC2	; 194
+ 7a6:	f0 e0       	ldi	r31, 0x00	; 0
+ 7a8:	80 81       	ld	r24, Z
+ 7aa:	87 7f       	andi	r24, 0xF7	; 247
+ 7ac:	80 83       	st	Z, r24
+
+	//Data Bits: 8
+	UCSR0C |= ( (1<<UCSZ00) | (1<<UCSZ01) );
+ 7ae:	80 81       	ld	r24, Z
+ 7b0:	86 60       	ori	r24, 0x06	; 6
+ 7b2:	80 83       	st	Z, r24
+
+	//Parity: None - ensure bits unset (incase they were set before)
+	UCSR0C &= ~( (1<<UPM00) | (1<<UPM01) );
+ 7b4:	80 81       	ld	r24, Z
+ 7b6:	8f 7c       	andi	r24, 0xCF	; 207
+ 7b8:	80 83       	st	Z, r24
+
+	//Mode: Ensure Asynchronous Mode (clear bits incase they were set before)
+	UCSR0C &= ~( (1<<UMSEL00) | (1<<UMSEL01) );
+ 7ba:	80 81       	ld	r24, Z
+ 7bc:	8f 73       	andi	r24, 0x3F	; 63
+ 7be:	80 83       	st	Z, r24
+	
+	//Enable the Transmitter and Receiver
+	UCSR0B |= (1<<TXEN0) | (1<<RXEN0);
+ 7c0:	e1 ec       	ldi	r30, 0xC1	; 193
+ 7c2:	f0 e0       	ldi	r31, 0x00	; 0
+ 7c4:	80 81       	ld	r24, Z
+ 7c6:	88 61       	ori	r24, 0x18	; 24
+ 7c8:	80 83       	st	Z, r24
+ 7ca:	08 95       	ret
+
+000007cc <UART_writeChar>:
+************************************************************************/
+void UART_writeChar(unsigned char data)
+{
+	
+	//Wait until transmit buffer empty
+	while ( !(UCSR0A & (1<<UDRE0) ) );
+ 7cc:	e0 ec       	ldi	r30, 0xC0	; 192
+ 7ce:	f0 e0       	ldi	r31, 0x00	; 0
+ 7d0:	90 81       	ld	r25, Z
+ 7d2:	95 ff       	sbrs	r25, 5
+ 7d4:	fd cf       	rjmp	.-6      	; 0x7d0 <UART_writeChar+0x4>
+	
+	//write char
+	UDR0 = data;
+ 7d6:	80 93 c6 00 	sts	0x00C6, r24
+ 7da:	08 95       	ret
+
+000007dc <UART_writeString>:
+* @param[in]	dataString	The string to write
+*
+* @return	none
+************************************************************************/
+void UART_writeString(const char dataString[])
+{
+ 7dc:	cf 93       	push	r28
+ 7de:	df 93       	push	r29
+ 7e0:	ec 01       	movw	r28, r24
+	uint16_t i = 0;
+	
+	//Loop through the string, writing character by character
+	while(dataString[i])
+ 7e2:	88 81       	ld	r24, Y
+ 7e4:	88 23       	and	r24, r24
+ 7e6:	31 f0       	breq	.+12     	; 0x7f4 <UART_writeString+0x18>
+ 7e8:	21 96       	adiw	r28, 0x01	; 1
+	{
+		UART_writeChar(dataString[i]);	//write each string
+ 7ea:	0e 94 e6 03 	call	0x7cc	; 0x7cc <UART_writeChar>
+void UART_writeString(const char dataString[])
+{
+	uint16_t i = 0;
+	
+	//Loop through the string, writing character by character
+	while(dataString[i])
+ 7ee:	89 91       	ld	r24, Y+
+ 7f0:	81 11       	cpse	r24, r1
+ 7f2:	fb cf       	rjmp	.-10     	; 0x7ea <UART_writeString+0xe>
+	{
+		UART_writeChar(dataString[i]);	//write each string
+		i++;
+	}
+}
+ 7f4:	df 91       	pop	r29
+ 7f6:	cf 91       	pop	r28
+ 7f8:	08 95       	ret
+
+000007fa <UART_printDecimal>:
+* @param[in]	numericVal	The value to write
+* @param[in]	padDigits	Left-Pad with zeros? Specifies final length of string. 0 = none
+* @return	none
+************************************************************************/
+void UART_printDecimal(uint16_t numericVal, uint8_t padDigits)
+{
+ 7fa:	0f 93       	push	r16
+ 7fc:	1f 93       	push	r17
+ 7fe:	cf 93       	push	r28
+ 800:	df 93       	push	r29
+ 802:	00 d0       	rcall	.+0      	; 0x804 <UART_printDecimal+0xa>
+ 804:	00 d0       	rcall	.+0      	; 0x806 <UART_printDecimal+0xc>
+ 806:	00 d0       	rcall	.+0      	; 0x808 <UART_printDecimal+0xe>
+ 808:	cd b7       	in	r28, 0x3d	; 61
+ 80a:	de b7       	in	r29, 0x3e	; 62
+ 80c:	fc 01       	movw	r30, r24
+ 80e:	06 2f       	mov	r16, r22
+	
+	char numberText[6]="";
+ 810:	19 82       	std	Y+1, r1	; 0x01
+ 812:	1a 82       	std	Y+2, r1	; 0x02
+ 814:	1b 82       	std	Y+3, r1	; 0x03
+ 816:	1c 82       	std	Y+4, r1	; 0x04
+ 818:	1e 82       	std	Y+6, r1	; 0x06
+ 81a:	1d 82       	std	Y+5, r1	; 0x05
+ 81c:	44 e0       	ldi	r20, 0x04	; 4
+	uint16_t workingNumber = numericVal;
+	char tempWorkNum;
+	uint16_t workingDivisor = 10000;
+	uint8_t digitNumber = 0;
+ 81e:	10 e0       	ldi	r17, 0x00	; 0
+{
+	
+	char numberText[6]="";
+	uint16_t workingNumber = numericVal;
+	char tempWorkNum;
+	uint16_t workingDivisor = 10000;
+ 820:	20 e1       	ldi	r18, 0x10	; 16
+ 822:	37 e2       	ldi	r19, 0x27	; 39
+	uint8_t digitNumber = 0;
+	
+	//Generate the individual digits by successively dividing by multiples of 10, and storing in a string variable
+	for (char i = 4; i>0; i--)
+	{
+		tempWorkNum = (workingNumber / (uint16_t)( workingDivisor ));
+ 824:	cf 01       	movw	r24, r30
+ 826:	b9 01       	movw	r22, r18
+ 828:	0e 94 65 04 	call	0x8ca	; 0x8ca <__udivmodhi4>
+		
+		//If the tempWorkNum is zero, then only record the digit if this is not the first digit (i.e. discard leading zeros)
+		//If the tempWorkNum is non-zero, then record the digit
+		if ( ((tempWorkNum == 0) && digitNumber > 0) || (tempWorkNum > 0) || (i < padDigits))
+ 82c:	61 11       	cpse	r22, r1
+ 82e:	04 c0       	rjmp	.+8      	; 0x838 <UART_printDecimal+0x3e>
+ 830:	11 11       	cpse	r17, r1
+ 832:	02 c0       	rjmp	.+4      	; 0x838 <UART_printDecimal+0x3e>
+ 834:	40 17       	cp	r20, r16
+ 836:	48 f4       	brcc	.+18     	; 0x84a <UART_printDecimal+0x50>
+		{
+			numberText[digitNumber] = tempWorkNum + 48;
+ 838:	a1 e0       	ldi	r26, 0x01	; 1
+ 83a:	b0 e0       	ldi	r27, 0x00	; 0
+ 83c:	ac 0f       	add	r26, r28
+ 83e:	bd 1f       	adc	r27, r29
+ 840:	a1 0f       	add	r26, r17
+ 842:	b1 1d       	adc	r27, r1
+ 844:	60 5d       	subi	r22, 0xD0	; 208
+ 846:	6c 93       	st	X, r22
+			digitNumber++;
+ 848:	1f 5f       	subi	r17, 0xFF	; 255
+			
+		}
+		
+		//Move one more digit to the right
+		workingNumber = workingNumber % workingDivisor;	//Remove the digit already processed
+ 84a:	cf 01       	movw	r24, r30
+ 84c:	b9 01       	movw	r22, r18
+ 84e:	0e 94 65 04 	call	0x8ca	; 0x8ca <__udivmodhi4>
+ 852:	fc 01       	movw	r30, r24
+		workingDivisor /= 10;
+ 854:	ad ec       	ldi	r26, 0xCD	; 205
+ 856:	bc ec       	ldi	r27, 0xCC	; 204
+ 858:	0e 94 9b 04 	call	0x936	; 0x936 <__umulhisi3>
+ 85c:	9c 01       	movw	r18, r24
+ 85e:	36 95       	lsr	r19
+ 860:	27 95       	ror	r18
+ 862:	36 95       	lsr	r19
+ 864:	27 95       	ror	r18
+ 866:	36 95       	lsr	r19
+ 868:	27 95       	ror	r18
+ 86a:	41 50       	subi	r20, 0x01	; 1
+	char tempWorkNum;
+	uint16_t workingDivisor = 10000;
+	uint8_t digitNumber = 0;
+	
+	//Generate the individual digits by successively dividing by multiples of 10, and storing in a string variable
+	for (char i = 4; i>0; i--)
+ 86c:	d9 f6       	brne	.-74     	; 0x824 <UART_printDecimal+0x2a>
+		workingNumber = workingNumber % workingDivisor;	//Remove the digit already processed
+		workingDivisor /= 10;
+	}
+	
+	//The last digit in the number
+	numberText[digitNumber] = (workingNumber % 10) + 48;
+ 86e:	41 e0       	ldi	r20, 0x01	; 1
+ 870:	50 e0       	ldi	r21, 0x00	; 0
+ 872:	4c 0f       	add	r20, r28
+ 874:	5d 1f       	adc	r21, r29
+ 876:	41 0f       	add	r20, r17
+ 878:	51 1d       	adc	r21, r1
+ 87a:	9f 01       	movw	r18, r30
+ 87c:	0e 94 9b 04 	call	0x936	; 0x936 <__umulhisi3>
+ 880:	96 95       	lsr	r25
+ 882:	87 95       	ror	r24
+ 884:	96 95       	lsr	r25
+ 886:	87 95       	ror	r24
+ 888:	96 95       	lsr	r25
+ 88a:	87 95       	ror	r24
+ 88c:	9c 01       	movw	r18, r24
+ 88e:	22 0f       	add	r18, r18
+ 890:	33 1f       	adc	r19, r19
+ 892:	88 0f       	add	r24, r24
+ 894:	99 1f       	adc	r25, r25
+ 896:	88 0f       	add	r24, r24
+ 898:	99 1f       	adc	r25, r25
+ 89a:	88 0f       	add	r24, r24
+ 89c:	99 1f       	adc	r25, r25
+ 89e:	82 0f       	add	r24, r18
+ 8a0:	93 1f       	adc	r25, r19
+ 8a2:	e8 1b       	sub	r30, r24
+ 8a4:	f9 0b       	sbc	r31, r25
+ 8a6:	e0 5d       	subi	r30, 0xD0	; 208
+ 8a8:	da 01       	movw	r26, r20
+ 8aa:	ec 93       	st	X, r30
+	
+	//Finally, write the number out as text.
+	UART_writeString(numberText);
+ 8ac:	ce 01       	movw	r24, r28
+ 8ae:	01 96       	adiw	r24, 0x01	; 1
+ 8b0:	0e 94 ee 03 	call	0x7dc	; 0x7dc <UART_writeString>
+
+}
+ 8b4:	26 96       	adiw	r28, 0x06	; 6
+ 8b6:	0f b6       	in	r0, 0x3f	; 63
+ 8b8:	f8 94       	cli
+ 8ba:	de bf       	out	0x3e, r29	; 62
+ 8bc:	0f be       	out	0x3f, r0	; 63
+ 8be:	cd bf       	out	0x3d, r28	; 61
+ 8c0:	df 91       	pop	r29
+ 8c2:	cf 91       	pop	r28
+ 8c4:	1f 91       	pop	r17
+ 8c6:	0f 91       	pop	r16
+ 8c8:	08 95       	ret
+
+000008ca <__udivmodhi4>:
+ 8ca:	aa 1b       	sub	r26, r26
+ 8cc:	bb 1b       	sub	r27, r27
+ 8ce:	51 e1       	ldi	r21, 0x11	; 17
+ 8d0:	07 c0       	rjmp	.+14     	; 0x8e0 <__udivmodhi4_ep>
+
+000008d2 <__udivmodhi4_loop>:
+ 8d2:	aa 1f       	adc	r26, r26
+ 8d4:	bb 1f       	adc	r27, r27
+ 8d6:	a6 17       	cp	r26, r22
+ 8d8:	b7 07       	cpc	r27, r23
+ 8da:	10 f0       	brcs	.+4      	; 0x8e0 <__udivmodhi4_ep>
+ 8dc:	a6 1b       	sub	r26, r22
+ 8de:	b7 0b       	sbc	r27, r23
+
+000008e0 <__udivmodhi4_ep>:
+ 8e0:	88 1f       	adc	r24, r24
+ 8e2:	99 1f       	adc	r25, r25
+ 8e4:	5a 95       	dec	r21
+ 8e6:	a9 f7       	brne	.-22     	; 0x8d2 <__udivmodhi4_loop>
+ 8e8:	80 95       	com	r24
+ 8ea:	90 95       	com	r25
+ 8ec:	bc 01       	movw	r22, r24
+ 8ee:	cd 01       	movw	r24, r26
+ 8f0:	08 95       	ret
+
+000008f2 <__udivmodsi4>:
+ 8f2:	a1 e2       	ldi	r26, 0x21	; 33
+ 8f4:	1a 2e       	mov	r1, r26
+ 8f6:	aa 1b       	sub	r26, r26
+ 8f8:	bb 1b       	sub	r27, r27
+ 8fa:	fd 01       	movw	r30, r26
+ 8fc:	0d c0       	rjmp	.+26     	; 0x918 <__udivmodsi4_ep>
+
+000008fe <__udivmodsi4_loop>:
+ 8fe:	aa 1f       	adc	r26, r26
+ 900:	bb 1f       	adc	r27, r27
+ 902:	ee 1f       	adc	r30, r30
+ 904:	ff 1f       	adc	r31, r31
+ 906:	a2 17       	cp	r26, r18
+ 908:	b3 07       	cpc	r27, r19
+ 90a:	e4 07       	cpc	r30, r20
+ 90c:	f5 07       	cpc	r31, r21
+ 90e:	20 f0       	brcs	.+8      	; 0x918 <__udivmodsi4_ep>
+ 910:	a2 1b       	sub	r26, r18
+ 912:	b3 0b       	sbc	r27, r19
+ 914:	e4 0b       	sbc	r30, r20
+ 916:	f5 0b       	sbc	r31, r21
+
+00000918 <__udivmodsi4_ep>:
+ 918:	66 1f       	adc	r22, r22
+ 91a:	77 1f       	adc	r23, r23
+ 91c:	88 1f       	adc	r24, r24
+ 91e:	99 1f       	adc	r25, r25
+ 920:	1a 94       	dec	r1
+ 922:	69 f7       	brne	.-38     	; 0x8fe <__udivmodsi4_loop>
+ 924:	60 95       	com	r22
+ 926:	70 95       	com	r23
+ 928:	80 95       	com	r24
+ 92a:	90 95       	com	r25
+ 92c:	9b 01       	movw	r18, r22
+ 92e:	ac 01       	movw	r20, r24
+ 930:	bd 01       	movw	r22, r26
+ 932:	cf 01       	movw	r24, r30
+ 934:	08 95       	ret
+
+00000936 <__umulhisi3>:
+ 936:	a2 9f       	mul	r26, r18
+ 938:	b0 01       	movw	r22, r0
+ 93a:	b3 9f       	mul	r27, r19
+ 93c:	c0 01       	movw	r24, r0
+ 93e:	a3 9f       	mul	r26, r19
+ 940:	70 0d       	add	r23, r0
+ 942:	81 1d       	adc	r24, r1
+ 944:	11 24       	eor	r1, r1
+ 946:	91 1d       	adc	r25, r1
+ 948:	b2 9f       	mul	r27, r18
+ 94a:	70 0d       	add	r23, r0
+ 94c:	81 1d       	adc	r24, r1
+ 94e:	11 24       	eor	r1, r1
+ 950:	91 1d       	adc	r25, r1
+ 952:	08 95       	ret
+
+00000954 <_exit>:
+ 954:	f8 94       	cli
+
+00000956 <__stop_program>:
+ 956:	ff cf       	rjmp	.-2      	; 0x956 <__stop_program>
