@@ -1,5 +1,5 @@
 <img src="http://www.crash-bang.com/wp-content/uploads/2015/01/Toadstool-Logo-Web-1024x379.png" alt="Toadstool Logo" width="320" height="117">
-# Toadstool-Sample-Projects
+# Toadstool Sample Projects
 
 **Sample Projects for Toadstool Boards**
 
